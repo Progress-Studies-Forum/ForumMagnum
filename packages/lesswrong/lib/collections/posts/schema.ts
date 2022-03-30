@@ -234,8 +234,8 @@ const schema: SchemaType<DbPost> = {
     optional: true,
     ...schemaDefaultValue(false),
     viewableBy: ['guests'],
-    insertableBy: ['admins'],
-    editableBy: ['admins'],
+    insertableBy: ['sunshineRegiment', 'admins'],
+    editableBy: ['sunshineRegiment', 'admins'],
     control: 'checkbox',
     order: 10,
     group: formGroups.adminOptions,
@@ -256,8 +256,8 @@ const schema: SchemaType<DbPost> = {
     type: SimpleSchema.Integer,
     ...schemaDefaultValue(2),
     viewableBy: ['guests'],
-    insertableBy: ['admins'],
-    editableBy: ['admins'],
+    insertableBy: ['sunshineRegiment', 'admins'],
+    editableBy: ['sunshineRegiment', 'admins'],
     control: 'select',
     options: () => Object.entries(STICKY_PRIORITIES).map(([level, name]) => ({
       value: parseInt(level),
@@ -618,6 +618,8 @@ const schema: SchemaType<DbPost> = {
     }),
     canRead: ['guests'],
   },
+
+  // The various reviewVoteScore and reviewVotes fields are for caching the results of the updateQuadraticVotes migration (which calculates the score of posts during the LessWrong Review)
   reviewVoteScoreAF: {
     type: Number, 
     optional: true,
@@ -665,6 +667,58 @@ const schema: SchemaType<DbPost> = {
     canRead: ['guests']
   },
   'reviewVotesAllKarma.$': {
+    type: Number,
+    optional: true,
+  },
+
+  // the final review scores for each post, at the end of the review.
+  finalReviewVoteScoreHighKarma: {
+    type: Number, 
+    optional: true,
+    defaultValue: 0,
+    canRead: ['guests']
+  },
+  finalReviewVotesHighKarma: {
+    type: Array,
+    optional: true,
+    defaultValue: [],
+    canRead: ['guests']
+  },
+  'finalReviewVotesHighKarma.$': {
+    type: Number,
+    optional: true,
+  },
+
+  finalReviewVoteScoreAllKarma: {
+    type: Number, 
+    optional: true,
+    defaultValue: 0,
+    canRead: ['guests']
+  },
+  finalReviewVotesAllKarma: {
+    type: Array,
+    optional: true,
+    defaultValue: [],
+    canRead: ['guests']
+  },
+  'finalReviewVotesAllKarma.$': {
+    type: Number,
+    optional: true,
+  },
+
+  finalReviewVoteScoreAF: {
+    type: Number, 
+    optional: true,
+    defaultValue: 0,
+    canRead: ['guests']
+  },
+  finalReviewVotesAF: {
+    type: Array,
+    optional: true,
+    defaultValue: [],
+    canRead: ['guests']
+  },
+  'finalReviewVotesAF.$': {
     type: Number,
     optional: true,
   },

@@ -7,16 +7,18 @@ import { communityGlobeIcon } from "../../icons/communityGlobeIcon";
 import { BookIcon } from "../../icons/bookIcon";
 import { allPostsIcon } from "../../icons/allPostsIcon";
 
-import Home from "@material-ui/icons/Home";
+import Home from '@material-ui/icons/Home'
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import Sort from "@material-ui/icons/Sort";
-import Info from "@material-ui/icons/Info";
-import LocalLibrary from "@material-ui/icons/LocalLibrary";
-import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
-import { communityPath } from "../../../lib/routes";
-import { REVIEW_YEAR } from "../../../lib/reviewUtils";
-import { ForumOptions } from "../../../lib/forumTypeUtils";
+import LocalOffer from '@material-ui/icons/LocalOffer';
+import Sort from '@material-ui/icons/Sort'
+import Info from '@material-ui/icons/Info';
+import LocalLibrary from '@material-ui/icons/LocalLibrary';
+import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck';
+import EventIcon from '@material-ui/icons/Event';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import { communityPath } from '../../../lib/routes';
+import { REVIEW_YEAR } from '../../../lib/reviewUtils';
+import { ForumOptions } from '../../../lib/forumTypeUtils';
 
 // The sidebar / bottom bar of the Forum contain 10 or so similar tabs, unique to each Forum. The
 // tabs can appear in
@@ -314,38 +316,46 @@ export const menuTabs: ForumOptions<Array<MenuTab>> = {
       tooltip:
         "To help you learn the basics of Effective Altruism, we took some of the best writing and made this handbook. Think of it as the textbook you’d get in your first college course. It explains the core ideas of EA, so that you can start applying them to your own life.",
       subItem: true,
-    },
-    {
-      id: "replacing-guilt",
-      title: "Replacing Guilt",
-      link: "/s/a2LBRPLhvwB83DSGq",
-      tooltip:
-        "Nate Soares writes about replacing guilt with other feelings, exercising self-compassion, and developing confidence — so that we can create a better world.",
+    }, {
+      id: 'replacing-guilt',
+      title: 'Replacing Guilt',
+      link: '/s/a2LBRPLhvwB83DSGq',
+      tooltip: "Nate Soares writes about replacing guilt with other feelings and finding better ways to motivate yourself, so you can build a better future without falling apart.",
       subItem: true,
-    },
-    {
-      id: "most-important-century",
-      title: "Most Important Century",
-      link: "/s/isENJuPdB3fhjWYHd",
-      tooltip: `Holden Karnofsky argues that there's a good chance of a productivity explosion by 2100, which could quickly lead to a "technologically mature" civilization.`,
+    }, {
+      id: 'most-important-century',
+      title: 'Most Important Century',
+      link: '/s/isENJuPdB3fhjWYHd',
+      tooltip: `Holden Karnofsky argues that we may be living in the most important century ever — a time when our decisions could shape the future for billions of years to come.`,
       subItem: true,
-    },
-    {
-      id: "events",
-      title: "Community and Events",
-      mobileTitle: "Events",
-      link: communityPath,
-      iconComponent: SupervisedUserCircleIcon,
-      tooltip: "See EA groups and events in your area",
+    }, {
+      id: 'takeAction',
+      title: 'Take Action',
+      link: '/tag/take-action',
+      iconComponent: PlaylistAddCheck,
+      tooltip: "Opportunities to get involved with impactful work",
+    }, {
+      id: 'events',
+      title: 'Events',
+      link: '/events',
+      iconComponent: EventIcon,
+      tooltip: 'Upcoming events near you',
       showOnMobileStandalone: true,
       showOnCompressed: true,
     },
     {
       id: "eventsList",
       customComponentName: "EventsList",
-    },
-    {
-      id: "divider",
+    }, {
+      id: 'community',
+      title: 'Community',
+      link: communityPath,
+      iconComponent: SupervisedUserCircleIcon,
+      tooltip: 'Join a group near you or meet others online',
+      showOnMobileStandalone: false,
+      showOnCompressed: true
+    }, {
+      id: 'divider',
       divider: true,
       showOnCompressed: true,
     },

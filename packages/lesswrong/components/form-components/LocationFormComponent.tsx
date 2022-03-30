@@ -15,11 +15,13 @@ export const geoSuggestStyles = (theme: ThemeType): JssStyles => ({
   },
   
   "& .geosuggest__input": {
+    backgroundColor: 'transparent',
     border: "2px solid transparent",
     borderBottom: "1px solid rgba(0,0,0,.87)",
-    padding: ".5em 1em 0.5em 0em !important",
+    padding: ".5em .5em 0.5em 0em !important",
     width: 350,
     fontSize: 13,
+    color: theme.palette.primary.main,
     [theme.breakpoints.down('sm')]: {
       width: "100%"
     },

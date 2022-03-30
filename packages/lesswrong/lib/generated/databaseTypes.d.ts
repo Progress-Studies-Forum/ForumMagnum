@@ -251,9 +251,11 @@ interface DbLocalgroup extends DbObject {
   facebookLink: string
   facebookPageLink: string
   meetupLink: string
+  slackLink: string
   website: string
-  inactive: boolean
   bannerImageId: string
+  inactive: boolean
+  deleted: boolean
   contents: EditableFieldContents
 }
 
@@ -366,6 +368,12 @@ interface DbPost extends DbObject {
   reviewVotesHighKarma: Array<number>
   reviewVoteScoreAllKarma: number
   reviewVotesAllKarma: Array<number>
+  finalReviewVoteScoreHighKarma: number
+  finalReviewVotesHighKarma: Array<number>
+  finalReviewVoteScoreAllKarma: number
+  finalReviewVotesAllKarma: Array<number>
+  finalReviewVoteScoreAF: number
+  finalReviewVotesAF: Array<number>
   lastCommentPromotedAt: Date
   tagRelevance: any /*{"definitions":[{}]}*/
   noIndex: boolean
@@ -413,6 +421,7 @@ interface DbPost extends DbObject {
   commentsLocked: boolean
   organizerIds: Array<string>
   groupId: string
+  eventType: string
   isEvent: boolean
   reviewedByUserId: string
   reviewForCuratedUserId: string
@@ -633,12 +642,14 @@ interface DbTag extends DbObject {
   reviewedByUserId: string
   wikiGrade: number
   wikiOnly: boolean
+  bannerImageId: string
   tagFlagsIds: Array<string>
   lesswrongWikiImportRevision: string
   lesswrongWikiImportSlug: string
   lesswrongWikiImportCompleted: boolean
   htmlWithContributorAnnotations: string
   contributionStats: any /*{"definitions":[{"blackbox":true}]}*/
+  introSequenceId: string
   description: EditableFieldContents
 }
 

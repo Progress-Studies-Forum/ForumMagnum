@@ -208,7 +208,7 @@ const PostsPage = ({post, refetch, classes}: {
             {post.eventImageId && <div className={classNames(classes.headerImageContainer, {[classes.headerImageContainerWithComment]: commentId})}>
               <CloudinaryImage2
                 publicId={post.eventImageId}
-                imgProps={{ar: '16:9', w: '682', q: 'auto:best'}}
+                imgProps={{ar: '16:9', w: '682'}}
                 className={classes.headerImage}
               />
             </div>}
@@ -220,7 +220,6 @@ const PostsPage = ({post, refetch, classes}: {
       <div className={classes.centralColumn}>
         {/* Body */}
         { post.isEvent && post.activateRSVPs &&  <RSVPs post={post} /> }
-        { post.isEvent && !post.onlineEvent && <Components.SmallMapPreview post={post} /> }
         <div className={classes.postContent}>
           <PostBodyPrefix post={post} query={query}/>
           <AnalyticsContext pageSectionContext="postBody">

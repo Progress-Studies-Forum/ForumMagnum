@@ -95,9 +95,11 @@ interface LocalgroupsDefaultFragment { // fragment on Localgroups
   readonly facebookLink: string,
   readonly facebookPageLink: string,
   readonly meetupLink: string,
+  readonly slackLink: string,
   readonly website: string,
-  readonly inactive: boolean,
   readonly bannerImageId: string,
+  readonly inactive: boolean,
+  readonly deleted: boolean,
 }
 
 interface TagRelsDefaultFragment { // fragment on TagRels
@@ -150,6 +152,12 @@ interface PostsDefaultFragment { // fragment on Posts
   readonly reviewVotesHighKarma: Array<number>,
   readonly reviewVoteScoreAllKarma: number,
   readonly reviewVotesAllKarma: Array<number>,
+  readonly finalReviewVoteScoreHighKarma: number,
+  readonly finalReviewVotesHighKarma: Array<number>,
+  readonly finalReviewVoteScoreAllKarma: number,
+  readonly finalReviewVotesAllKarma: Array<number>,
+  readonly finalReviewVoteScoreAF: number,
+  readonly finalReviewVotesAF: Array<number>,
   readonly lastCommentPromotedAt: Date,
   readonly tagRelevance: any /*{"definitions":[{}]}*/,
   readonly noIndex: boolean,
@@ -251,6 +259,7 @@ interface TagsDefaultFragment { // fragment on Tags
   readonly reviewedByUserId: string,
   readonly wikiGrade: number,
   readonly wikiOnly: boolean,
+  readonly bannerImageId: string,
   readonly tagFlagsIds: Array<string>,
   readonly lesswrongWikiImportRevision: string,
   readonly lesswrongWikiImportSlug: string,
@@ -258,6 +267,7 @@ interface TagsDefaultFragment { // fragment on Tags
   readonly htmlWithContributorAnnotations: string,
   readonly contributors: any /*TagContributorsList*/,
   readonly contributionStats: any /*{"definitions":[{"blackbox":true}]}*/,
+  readonly introSequenceId: string,
 }
 
 interface RevisionsDefaultFragment { // fragment on Revisions
@@ -345,6 +355,7 @@ interface PostsBase extends PostsMinimumInfo { // fragment on Posts
   readonly contactInfo: string,
   readonly isEvent: boolean,
   readonly eventImageId: string,
+  readonly eventType: string,
   readonly types: Array<string>,
   readonly groupId: string,
   readonly reviewedByUserId: string,
@@ -365,10 +376,6 @@ interface PostsBase extends PostsMinimumInfo { // fragment on Posts
   readonly submitToFrontpage: boolean,
   readonly shortform: boolean,
   readonly onlyVisibleToLoggedIn: boolean,
-  readonly nominationCount2018: number,
-  readonly reviewCount2018: number,
-  readonly nominationCount2019: number,
-  readonly reviewCount2019: number,
   readonly reviewCount: number,
   readonly reviewVoteCount: number,
   readonly positiveReviewVoteCount: number,
@@ -378,7 +385,17 @@ interface PostsBase extends PostsMinimumInfo { // fragment on Posts
   readonly reviewVotesHighKarma: Array<number>,
   readonly reviewVoteScoreAF: number,
   readonly reviewVotesAF: Array<number>,
+  readonly finalReviewVoteScoreHighKarma: number,
+  readonly finalReviewVotesHighKarma: Array<number>,
+  readonly finalReviewVoteScoreAllKarma: number,
+  readonly finalReviewVotesAllKarma: Array<number>,
+  readonly finalReviewVoteScoreAF: number,
+  readonly finalReviewVotesAF: Array<number>,
   readonly group: PostsBase_group|null,
+  readonly nominationCount2018: number,
+  readonly reviewCount2018: number,
+  readonly nominationCount2019: number,
+  readonly reviewCount2019: number,
 }
 
 interface PostsBase_group { // fragment on Localgroups
@@ -456,6 +473,7 @@ interface PostsDetails extends PostsListBase { // fragment on Posts
   readonly noIndex: boolean,
   readonly viewCount: number,
   readonly socialPreviewImageUrl: string,
+  readonly tagRelevance: any /*{"definitions":[{}]}*/,
   readonly commentSortOrder: string,
   readonly collectionTitle: string,
   readonly canonicalPrevPostSlug: string,
@@ -1193,9 +1211,11 @@ interface localGroupsBase { // fragment on Localgroups
   readonly facebookLink: string,
   readonly facebookPageLink: string,
   readonly meetupLink: string,
+  readonly slackLink: string,
   readonly website: string,
-  readonly inactive: boolean,
   readonly bannerImageId: string,
+  readonly inactive: boolean,
+  readonly deleted: boolean,
 }
 
 interface localGroupsHomeFragment extends localGroupsBase { // fragment on Localgroups
@@ -1385,8 +1405,10 @@ interface TagDetailsFragment extends TagBasicInfo { // fragment on Tags
   readonly defaultOrder: number,
   readonly reviewedByUserId: string,
   readonly wikiGrade: number,
+  readonly bannerImageId: string,
   readonly lesswrongWikiImportSlug: string,
   readonly lesswrongWikiImportRevision: string,
+  readonly sequence: SequencesPageFragment|null,
 }
 
 interface TagFragment extends TagDetailsFragment { // fragment on Tags

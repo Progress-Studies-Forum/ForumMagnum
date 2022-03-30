@@ -18,6 +18,16 @@ import { captureException } from '@sentry/core';
 import { formGroups } from './formGroups';
 import { userOverNKarmaFunc } from "../../vulcan-users";
 
+export const EVENT_TYPES = [
+  {value: 'presentation', label: 'Presentation'},
+  {value: 'discussion', label: 'Discussion'},
+  {value: 'workshop', label: 'Workshop'},
+  {value: 'social', label: 'Social'},
+  {value: 'coworking', label: 'Coworking'},
+  {value: 'course', label: 'Course'},
+  {value: 'conference', label: 'Conference'},
+]
+
 const isEAForum = forumTypeSetting.get() === 'EAForum'
 function eaFrontpageDate (document: Partial<DbPost>) {
   if (document.isEvent || !document.submitToFrontpage) {
@@ -648,6 +658,22 @@ addFieldsDict(Posts, {
     group: formGroups.event,
     hidden: (props) => !props.eventForm,
   },
+  
+  eventType: {
+    type: String,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    hidden: (props) => !props.eventForm,
+    control: 'select',
+    group: formGroups.event,
+    optional: true,
+    order: 2,
+    label: 'Event Format',
+    form: {
+      options: EVENT_TYPES
+    },
+  },
 
   isEvent: {
     type: Boolean,
@@ -697,6 +723,7 @@ addFieldsDict(Posts, {
     group: formGroups.event,
     optional: true,
     nullable: true,
+    tooltip: 'For courses/programs, this is the application deadline.'
   },
 
   localStartTime: {
@@ -706,7 +733,7 @@ addFieldsDict(Posts, {
 
   endTime: {
     type: Date,
-    hidden: (props) => !props.eventForm,
+    hidden: (props) => !props.eventForm || props.document.eventType === 'course',
     viewableBy: ['guests'],
     editableBy: ['members', 'sunshineRegiment', 'admins'],
     insertableBy: ['members'],
