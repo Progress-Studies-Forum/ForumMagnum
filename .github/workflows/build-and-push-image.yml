@@ -1,7 +1,7 @@
 name: Build and push Docker image
 on:
   push:
-    branches: [master]
+    branches: [master, development]
 jobs:
   build:
     name: Build Image
