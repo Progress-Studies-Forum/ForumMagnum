@@ -20,6 +20,7 @@ const styles = (theme: ThemeType): JssStyles => ({
   },
   title: {
     ...sectionTitleStyle(theme),
+    color: theme.palette.primary.main,
     display: "inline",
     marginRight: "auto"
   },

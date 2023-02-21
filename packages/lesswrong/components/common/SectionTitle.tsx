@@ -20,7 +20,8 @@ const styles = (theme: ThemeType): JssStyles => ({
     marginTop: 0
   },
   title: {
-    ...sectionTitleStyle(theme)
+    ...sectionTitleStyle(theme),
+    color: theme.palette.primary.main,
   },
   children: {
     ...theme.typography.commentStyle,
