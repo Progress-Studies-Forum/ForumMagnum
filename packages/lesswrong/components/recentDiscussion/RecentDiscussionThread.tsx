@@ -100,8 +100,10 @@ const styles = (theme: ThemeType): JssStyles => ({
     flexGrow: 1,
     marginTop: 0,
     marginBottom: 8,
+    marginRight: 8,
     display: "block",
-    fontSize: "1.75rem",
+    fontSize: "1.9rem",
+    lineHeight: 1.25,
   },
   actions: {
     "& .PostsPageActions-icon": {

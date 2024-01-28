@@ -60,7 +60,7 @@ const theme = createLWTheme({
   typography: {
     fontDownloads: [
       "https://fonts.googleapis.com/css?family=Mukta:300,400,500,600",
-      "https://fonts.googleapis.com/css?family=Source+Serif+Pro:300,400,500,600",
+      "https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap",
     ],
     fontFamily: sansSerifStack,
     postStyle: {
@@ -68,6 +68,7 @@ const theme = createLWTheme({
     },
     headerStyle: {
       fontFamily: serifStack,
+      fontWeight: 700,
     },
     caption: {
       // captions should be relative to their surrounding content, so they are unopinionated about fontFamily and use ems instead of rems
